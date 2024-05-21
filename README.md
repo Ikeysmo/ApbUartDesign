@@ -6,13 +6,13 @@ This is made possible by implementing the APB (Advanced Peripheral Bus) protocol
 
 
 
-### CREGS ###
+### CREGS (Control Registers) ###
 
-| Name | Register|
-|------|------|
-| TX REG | Value| 
-| TX REG | Value| 
-| TX REG | Value| 
-| TX REG | Value| 
+| Name | Address | R/W | Description|
+|------|------|-----|-----|
+| CR WRITE REG | 0x600 | RW|  Configure UART DATA to send out  |
+| CR READ REG | 0x602 | RW| Configure UART DATA to read |
+| CR BAUD_RATE REG | 0x604 | RW| Configure UART Baud Rate |
+| CR STATUS REG | 0x606 | R| Read UART STATUS (Busy, Tx, etc)  |
 
 
