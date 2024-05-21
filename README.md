@@ -16,3 +16,32 @@ This is made possible by implementing the APB (Advanced Peripheral Bus) protocol
 | CR STATUS REG | 0x606 | R| Read UART STATUS (Busy, Tx, etc)  |
 
 
+
+### CR WRITE REG (ADDR: 0x600) 
+|Bits|Field| Description
+|--|--|--|
+| 15:9 | RESERVED | N/A | 
+| 8: 8 | TX Send | Sends TX Byte | 
+| 7:0 | DATA_BYTE_TX | TX Byte that gets transmitted |
+
+
+### CR READ REG (ADDR: 0x602)
+|Bits|Field| Description
+|--|--|--|
+| 15:8 | RESERVED | N/A
+| 7:0 | DATA_BYTE_RX | TX Byte that was received. Ignore further Tx's until cleared |
+
+
+### CR BAUD_RATE REG (ADDR: 0x604)
+|Bits|Field| Description
+|--|--|--|
+| 15:12 | ID | ID Bits. Should read out 0x8C|
+| 11:0 | Baudrate | Baud rate that UART operates at.  |
+
+
+### CR STATUS REG (ADDR: 0x606)
+|Bits|Field| Description
+|--|--|--|
+| 1:1 | RX_DATA_READY | RX has received data|
+| 0:0 | TX_BUSY | TX is busy right now |
+
