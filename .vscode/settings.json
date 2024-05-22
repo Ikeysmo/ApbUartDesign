@@ -1,0 +1,15 @@
+{
+ "files.exclude": {
+  "**/*.backup*": true,
+  "**/xelab.*": true,
+  "**/xvlog.*": true,
+  "**/vivado_pid*.str": true,
+  "**/xsim.*": true,
+  "**/*.pb": true,
+  "**/*.wcfg": true,
+  "**/*.wdb": true,
+  "**/.Xil": true,
+  "**/xcrg.log": true,
+  "**/simulate_batch.tcl": true
+ }
+}

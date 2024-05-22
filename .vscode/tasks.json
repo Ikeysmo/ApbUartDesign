@@ -1,0 +1,114 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "xvlog",
+      "args": [
+        "-sv",
+        "-L",
+        "uvm",
+        "*.sv"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": true
+      }
+    },
+    {
+      "label": "Elaborate",
+      "type": "shell",
+      "command": "xelab -sv top --debug typical --mt 8 --timescale 1ns/1ps",
+      "args": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": false
+      },
+      "dependsOn": [
+        "Build"
+      ]
+    },
+    {
+      "label": "Simulate",
+      "type": "shell",
+      "command": "xsim work.top -R",
+      "args": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": false
+      },
+      "dependsOn": [
+        "Elaborate"
+      ]
+    },
+    {
+      "label": "Simulate (GUI)",
+      "type": "shell",
+      "command": "xsim",
+      "args": [
+        "work.top",
+        "-gui",
+        "--tclbatch",
+        "simulate_batch.tcl"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": false
+      },
+      "dependsOn": [
+        "Elaborate"
+      ]
+    },
+    {
+      "label": "Generate Coverage",
+      "type": "shell",
+      "command": "xcrg",
+      "args": [
+        "-dir",
+        ".",
+        "-report_dir",
+        "./coverage_report",
+        "-report_format",
+        "html"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": false
+      }
+    },
+    {
+      "label": "Show Coverage",
+      "type": "shell",
+      "command": "firefox",
+      "args": [
+        "coverage_report/dashboard.html"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": false
+      },
+      "dependsOn": [
+        "Generate Coverage"
+      ]
+    }
+  ]
+}
